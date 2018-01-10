@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Complex Polylines</title>
+    <style>
+         /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+         #map {
+             height: 100%;
+         }
+         /* Optional: Makes the sample page fill the window. */
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+      // This example creates an interactive map which constructs a polyline based on
+      // user clicks. Note that the polyline only appears once its path property
+      // contains two LatLng coordinates.
+
+      var polygon;
+      var map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat: 41.879, lng: -87.624}  // Center the map on Chicago, USA.
+        });
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+            drawingMode: google.maps.drawing.OverlayType.MARKER,
+            drawingControl: true,
+            drawingControlOptions: {
+                position: google.maps.ControlPosition.TOP_CENTER,
+                drawingModes: ['polygon']
+            },
+            markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
+        });
+
+
+        drawingManager.setMap(map);
+
+        google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
+            var path = polygon.getPath();
+            
+            var l = path.getLength();
+ 
+            var contentString=[];
+            for (var i = 0; i <l; i++) {
+                var xy = path.getAt(i);
+                contentString += i + "," + xy.lat() + "," + xy.lng() + " ; ";
+            }
+            alert(contentString);
+        });
+         //path.push(event.latLng);
+
+         //Add a new marker at the new plotted point on the polyline.
+    
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJAN3MMlMWbHkEA_6V41PMJtQ4J9bR7FI&libraries=drawing&callback=initMap"
+            async defer></script>
+</body>
+</html>
