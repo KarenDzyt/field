@@ -3,7 +3,7 @@ draw the concept map of field
 
 2018/1/8 22:06
 	
-	• 农田划分/管理
+	• 农田划分/管理（默认此时的农田近似平行四边形）
 	1. 加载初始地图；
 	2. 选择农田；
 	3. 绘制农田；----DrawingManager
