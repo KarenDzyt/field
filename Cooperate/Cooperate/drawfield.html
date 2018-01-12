@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Complex Polylines</title>
+    <title>Concept Field</title>
     <style>
          /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
@@ -22,19 +22,16 @@
     <div id="map"></div>
     <script>
 
-      // This example creates an interactive map which constructs a polyline based on
-      // user clicks. Note that the polyline only appears once its path property
-      // contains two LatLng coordinates.
-
       var polygon;
       var map;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {lat: 41.879, lng: -87.624}  // Center the map on Chicago, USA.
+          zoom: 17,
+          center: {lat: 39, lng: 116}  // Center the map on Beijing,China.
         });
 
+          //调用drawingManager库，手动画农田
         var drawingManager = new google.maps.drawing.DrawingManager({
             drawingMode: google.maps.drawing.OverlayType.MARKER,
             drawingControl: true,
@@ -45,29 +42,36 @@
             markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
         });
 
-
         drawingManager.setMap(map);
 
+        //监控多边形绘制完成事件，在事件内调用spherical.computeDistanceBetween方法计算两点之间的地理距离
         google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
             var path = polygon.getPath();
-            
             var l = path.getLength();
- 
-            var contentString=[];
-            for (var i = 0; i <l; i++) {
-                var xy = path.getAt(i);
-                contentString += i + "," + xy.lat() + "," + xy.lng() + " ; ";
-            }
-            alert(contentString);
-        });
-         //path.push(event.latLng);
 
-         //Add a new marker at the new plotted point on the polyline.
+            /* 尝试用数组存储多边形端点，但是重复，path.getAt(i)就是指定类型
+            var k = { };
+            for (var i = 0; i <l; i++) {
+                k[i] = path.getAt(i); 
+            }
+            var d1 = google.maps.geometry.spherical.computeDistanceBetween(k[0], k[1]);  */
+
+            var d_AB;
+            var d1 = google.maps.geometry.spherical.computeDistanceBetween(path.getAt(0), path.getAt(1));
+            var d2 = google.maps.geometry.spherical.computeDistanceBetween(path.getAt(l - 1), path.getAt(0));
+
+            if (d1 > d2)
+                d_AB = d1;
+            else
+                d_AB = d2;
+            alert(d_AB);
+        });
+         
     
       }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJAN3MMlMWbHkEA_6V41PMJtQ4J9bR7FI&libraries=drawing&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJAN3MMlMWbHkEA_6V41PMJtQ4J9bR7FI&libraries=drawing&geometry&callback=initMap"
             async defer></script>
 </body>
 </html>

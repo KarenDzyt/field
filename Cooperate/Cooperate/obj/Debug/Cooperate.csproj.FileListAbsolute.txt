@@ -31,3 +31,36 @@ D:\VS2015\Cooperate\Cooperate\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlat
 D:\VS2015\Cooperate\Cooperate\obj\Debug\Cooperate.csprojResolveAssemblyReference.cache
 D:\VS2015\Cooperate\Cooperate\obj\Debug\Cooperate.dll
 D:\VS2015\Cooperate\Cooperate\obj\Debug\Cooperate.pdb
+D:\Git demo\Cooperate\Cooperate\bin\ApplicationInsights.config
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\csc.exe
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\System.Collections.Immutable.dll
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\System.Reflection.Metadata.dll
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\vbc.exe
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\VBCSCompiler.exe
+D:\Git demo\Cooperate\Cooperate\bin\roslyn\VBCSCompiler.exe.config
+D:\Git demo\Cooperate\Cooperate\bin\Cooperate.dll.config
+D:\Git demo\Cooperate\Cooperate\bin\Cooperate.dll
+D:\Git demo\Cooperate\Cooperate\bin\Cooperate.pdb
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.DependencyCollector.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.Web.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.WindowsServer.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.ApplicationInsights.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.DependencyCollector.xml
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.Web.xml
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.AI.WindowsServer.xml
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.ApplicationInsights.xml
+D:\Git demo\Cooperate\Cooperate\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Git demo\Cooperate\Cooperate\obj\Debug\Cooperate.csprojResolveAssemblyReference.cache
+D:\Git demo\Cooperate\Cooperate\obj\Debug\Cooperate.dll
+D:\Git demo\Cooperate\Cooperate\obj\Debug\Cooperate.pdb
