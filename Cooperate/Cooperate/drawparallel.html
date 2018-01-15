@@ -55,47 +55,73 @@
             var width = 5;
             var AB_count = Math.floor(d_AB / width);
             var strip_count = Math.floor(d_AB / (width * 2));
-
-            /* 坐标转换错误示范:缩放级别？
-            var A0_point = map.getProjection().fromLatLngToPoint(A0);
-            var B0_point = map.getProjection().fromLatLngToPoint(B0);
-            
-            var PixelArr1 = getPixel(A0_point, B0_point, width);
-            var PixelArr2 = getPixel(B0_point, A0_point, width);
-            var A1_point = new google.maps.Point(PixelArr1[0], PixelArr1[1]);
-            var B1_point = new google.maps.Point(PixelArr2[0], PixelArr2[1]);
-
-            var A1 = map.getProjection().fromPointToLatLng(A1_point);
-            var B1 = map.getProjection().fromPointToLatLng(B1_point);
-            */
-
-            //坐标转换
-            var A0_point = latLng2Point(A0, map);
-            var B0_point = latLng2Point(B0, map);
-            
-            var PixelArr1 = getPixelB(A0_point, B0_point, width);
-            var PixelArr2 = getPixelA(B0_point, A0_point, width);
-            var B1_point = new google.maps.Point(PixelArr1[0], PixelArr1[1]);
-            var A1_point = new google.maps.Point(PixelArr2[0], PixelArr2[1]);
-
-            var A1 = point2LatLng(A1_point, map);
-            var B1 = point2LatLng(B1_point, map);
-
-
-            var triangleCoords = [A0,B0,B1,A1];
-            var bermudaTriangle = new google.maps.Polygon({
-                paths: triangleCoords,
-                strokeColor: '#FF0000',
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: '#FF0000',
-                fillOpacity: 0.35
-            });
-            bermudaTriangle.setMap(map);
-
+            alert(strip_count);
+            DrawStrips(A0, B0, width, strip_count, map);
         });
       }
+      function DrawStrips(A_STRAT, B_EDN, width, strip_count, map) {
 
+          /* 坐标转换错误示范:缩放级别？
+          var A0_point = map.getProjection().fromLatLngToPoint(A0);
+          var B0_point = map.getProjection().fromLatLngToPoint(B0);
+          
+          var PixelArr1 = getPixel(A0_point, B0_point, width);
+          var PixelArr2 = getPixel(B0_point, A0_point, width);
+          var A1_point = new google.maps.Point(PixelArr1[0], PixelArr1[1]);
+          var B1_point = new google.maps.Point(PixelArr2[0], PixelArr2[1]);
+
+          var A1 = map.getProjection().fromPointToLatLng(A1_point);
+          var B1 = map.getProjection().fromPointToLatLng(B1_point);
+          */
+
+          //坐标转换
+          var A0_point = [];
+          var B0_point = [];
+
+          var PixelArr1 = [];
+          var PixelArr2 = [];
+          var B1_point = [];
+          var A1_point = [];
+
+          var A1 = [];
+          var B1 = [];
+          var A0 = A_STRAT;
+          var B0 = B_EDN;
+
+          var triangleCoords = [];
+
+          for (var i = 0; i < strip_count; i++) {
+
+               A0_point[i] = latLng2Point(A0, map);
+               B0_point[i] = latLng2Point(B0, map);
+
+               PixelArr1 = getPixelB(A0_point[i], B0_point[i], width);
+               PixelArr2 = getPixelA(B0_point[i], A0_point[i], width);
+               B1_point[i] = new google.maps.Point(PixelArr1[0], PixelArr1[1]);
+               A1_point[i]= new google.maps.Point(PixelArr2[0], PixelArr2[1]);
+
+               A1 = point2LatLng(A1_point[i], map);
+               B1 = point2LatLng(B1_point[i], map);
+
+               triangleCoords = [A0, B0, B1, A1];
+              var bermudaTriangle = new google.maps.Polygon({
+                  paths: triangleCoords,
+                  strokeColor: '#FF0000',
+                  strokeOpacity: 0.8,
+                  strokeWeight: 2,
+                  fillColor: '#FF0000',
+                  fillOpacity: 0.35
+              });
+              bermudaTriangle.setMap(map);
+
+              A0_point[i] = A1_point[i];
+              B0_point[i] = B1_point[i];
+
+              A0 = A1;
+              B0 = B1;
+          }
+         
+      }
       function latLng2Point(latLng, map) {
           var topRight = map.getProjection().fromLatLngToPoint(map.getBounds().getNorthEast());
           var bottomLeft = map.getProjection().fromLatLngToPoint(map.getBounds().getSouthWest());
